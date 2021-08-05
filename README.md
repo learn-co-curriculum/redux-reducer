@@ -22,60 +22,60 @@ code in `src/reducers/manageFriends.js` and `src/reducers/managePresents.js`.
 
 ## Instructions
 
-1. In `managePresents.js`, write a function called `managePresents()` that takes
-   in the previous state and an action as its argument. Set a default value for
-   the state argument - an object with a key, `numberOfPresents`, assigned to
-   `0`.
+**1.** In `managePresents.js`, write a function called `managePresents()` that
+takes in the previous state and an action as its argument. Set a default value
+for the state argument - an object with a key, `numberOfPresents`, assigned to
+`0`.
 
-   Actions passed into this reducer will only have a _type_ attribute, so they
-   would look something like this:
+Actions passed into this reducer will only have a _type_ attribute, so they
+would look something like this:
 
-    ```js
-    action = {
-      type: "INCREASE"
-    }
-    ```
+```js
+action = {
+  type: "INCREASE",
+};
+```
 
-   If the reducer receives a `type` set to `"INCREASE"`, return a new state
-   where the value of `numberOfPresents` is increased by one. Use the tests to
-   guide you as you build out this reducer.
+If the reducer receives a `type` set to `"INCREASE"`, return a new state
+where the value of `numberOfPresents` is increased by one. Use the tests to
+guide you as you build out this reducer.
 
-2. In `manageFriends.js`, write a function called `manageFriends` that takes in
-   the previous state and an action as its argument.  Here, the initial state
-   should be an object with a key, `friends`, set to an empty array.
+**2.** In `manageFriends.js`, write a function called `manageFriends` that takes
+in the previous state and an action as its argument. Here, the initial state
+should be an object with a key, `friends`, set to an empty array.
 
-   This time, the reducer should be able to handle two actions, `"ADD_FRIEND"`
-   and `"REMOVE_FRIEND"`. When adding a friend, the action will include a
-   `friend` key assigned to an object with `name`, `hometown`, and `id` keys.
+This time, the reducer should be able to handle two actions, `"ADD_FRIEND"`
+and `"REMOVE_FRIEND"`. When adding a friend, the action will include a
+`friend` key assigned to an object with `name`, `hometown`, and `id` keys.
 
-    ```js
-    action = {
-      type: "ADD_FRIEND",
-      friend: {
-        name: "Chrome Boi",
-        hometown: "NYC",
-        id: 1
-      }
-    }
-    ```
+```js
+action = {
+  type: "ADD_FRIEND",
+  friend: {
+    name: "Chrome Boi",
+    hometown: "NYC",
+    id: 1,
+  },
+};
+```
 
-   When our reducer receives `"ADD_FRIEND"`, it should return a new state with
-   this friend object added to the `friends` array.
+When our reducer receives `"ADD_FRIEND"`, it should return a new state with
+this friend object added to the `friends` array.
 
-   When removing a friend, instead of an object, the action will include an `id` key
-   with an integer. Find the friend with the matching `id` and remove them. Thought of
-   in another way, the reducer is really returning a new state with an array of `friends`
-   that includes everyone _except_ the removed friend.
+When removing a friend, instead of an object, the action will include an `id` key
+with an integer. Find the friend with the matching `id` and remove them. Thought of
+in another way, the reducer is really returning a new state with an array of `friends`
+that includes everyone _except_ the removed friend.
 
-    ```js
-    action = {
-      type: "REMOVE_FRIEND",
-      id: 1
-    }
-    ```
+```js
+action = {
+  type: "REMOVE_FRIEND",
+  id: 1,
+};
+```
 
-Both reducers should be pure functions.  This means that the functions cannot
-change any object defined outside of the functions.  It also means that given an
+Both reducers should be pure functions. This means that the functions cannot
+change any object defined outside of the functions. It also means that given an
 input, the reducers will always return the same output.
 
 ## Don't Mutate State
@@ -83,17 +83,17 @@ input, the reducers will always return the same output.
 As the Redux documentation notes:
 
 > Since one of the core tenets of Redux is to never mutate state, you'll often
-find yourself using `Object.assign()` to create copies of objects with new or
-updated values.
+> find yourself using `Object.assign()` to create copies of objects with new or
+> updated values.
 
 If you remember, `Object.assign()` is a function that takes any number of
 arguments. It works by copying over from left to right the properties in each
-object passed as an argument.  Let's go over an example:
+object passed as an argument. Let's go over an example:
 
 ```js
-let dog = {id: 1, name: 'scooby', color: 'brown', age: 4};
+let dog = { id: 1, name: "scooby", color: "brown", age: 4 };
 // if scooby had a birthday, we could write:
-let olderDog = Object.assign({}, dog, {age: dog.age + 1})
+let olderDog = Object.assign({}, dog, { age: dog.age + 1 });
 ```
 
 Translating this to English would be something like, "Start with a new empty
@@ -110,9 +110,9 @@ the spread (...) operator to copy enumerable properties from one object to
 another in a more succinct way:
 
 ```javascript
-let dog = {id: 1, name: 'scooby', color: 'brown', age: 4};
+let dog = { id: 1, name: "scooby", color: "brown", age: 4 };
 
-let olderDog = {...dog, age: dog.age + 1}
+let olderDog = { ...dog, age: dog.age + 1 };
 ```
 
 This would translate to the same English, "Return a new object that contains all
